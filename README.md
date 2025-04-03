@@ -281,7 +281,7 @@ Rework of [Tima's Seals mod](https://thunderstore.io/c/lethal-company/p/Tima/Tim
 
 > ### The adorable critter from Girls' Last Tour.
 
-They seem quiet at first, but they seem to interact strangely with electronic devices. Try giving them a speaker...
+They seem quiet at first, but they seem to interact strangely with electronic devices... Try giving them a speaker.
 
 Original model by [LuShen](https://sketchfab.com/3d-models/girls-last-tours-nuko-4fb7fd44c7ce458d94bb0bc9f635e468).
 
@@ -384,4 +384,4 @@ I've tested fairly thoroughly, but this mod ends up adding a lot of custom scrip
 
 ## Contact
 
-Let me know about any suggestions or issues on the [GitHub](https://github.com/Science-Bird/ScienceBirdTweaks), or if you'd prefer you can mention it in my [Discord thread](https://discord.com/channels/1168655651455639582/1350616165289951272) (I'm "sciencebird" on Discord).
+Let me know about any suggestions or issues on the [GitHub](https://github.com/Science-Bird/PolishedPlushiesAndSillyScrap), or if you'd prefer you can mention it in my [Discord thread](https://discord.com/channels/1168655651455639582/1350616165289951272) (I'm "sciencebird" on Discord).
