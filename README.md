@@ -258,7 +258,7 @@ Model adapted from [the Sonic Adventure 2: Battle mod by leptonychotes](https://
 
 ---
 
-![Seal](https://imgur.com/27Od7hf.png)
+![Seal](https://imgur.com/oUfl4pE.png)
 ![SealGIFIdle](https://imgur.com/X18dYTf.gif)
 ![SealGIFAnimations](https://imgur.com/cGdSt9f.gif)
 

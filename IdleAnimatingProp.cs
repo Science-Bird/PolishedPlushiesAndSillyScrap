@@ -86,6 +86,21 @@ namespace PolishedPlushiesAndSillyScrap
             if (Time.realtimeSinceStartup - lastIntervalTime > currentInterval)
             {
                 lastIntervalTime = Time.realtimeSinceStartup;
+                if (animationRandom == null)
+                {
+                    NetworkObject networkObj = base.gameObject.GetComponent<NetworkObject>();
+                    if (networkObj != null)
+                    {
+                        //PolishedPlushiesAndSillyScrap.Logger.LogDebug($"{base.itemProperties.itemName} - Network ID: {(int)networkObj.NetworkObjectId}");
+                        //PolishedPlushiesAndSillyScrap.Logger.LogDebug($"{base.itemProperties.itemName} - Using seed: {StartOfRound.Instance.randomMapSeed + 85 + (int)networkObj.NetworkObjectId}");
+                        animationRandom = new System.Random(StartOfRound.Instance.randomMapSeed + 85 + (int)networkObj.NetworkObjectId);
+                    }
+                    else
+                    {
+                        //PolishedPlushiesAndSillyScrap.Logger.LogDebug($"{base.itemProperties.itemName} - No network object. Using seed: {StartOfRound.Instance.randomMapSeed + 85}");
+                        animationRandom = new System.Random(StartOfRound.Instance.randomMapSeed + 85);
+                    }
+                }
                 currentInterval = (float)animationRandom.NextDouble() * (maxInterval - minInterval) + minInterval;
                 if ((float)animationRandom.NextDouble() * 100f < animChancePercent && !isHeld)
                 {
@@ -170,7 +185,6 @@ namespace PolishedPlushiesAndSillyScrap
                     animationRandom = new System.Random(StartOfRound.Instance.randomMapSeed + 85);
                 }
             }
-
             if (holdingAnimation && triggerAnimator != null)
             {
                 triggerAnimator.SetTrigger("playHold");

@@ -193,7 +193,7 @@ namespace PolishedPlushiesAndSillyScrap
             }
             if (zigzagPresent)
             {
-                SSSBlacklistPatch.DoPatching();
+                SSSBlacklist.AddBlacklistTrigger();
             }
 
                 Harmony.PatchAll();
