@@ -1,3 +1,4 @@
+using System.Threading;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -45,6 +46,12 @@ namespace PolishedPlushiesAndSillyScrap
 
         public float correctVertical = 0.5f;
 
+        private static Vector3 nukoOffset = new Vector3(0f, 0f, -0.1739691f);
+
+        private Transform nukoAnimator;
+
+        private bool muted = false;
+
         public override void Start()
         {
             base.Start();
@@ -62,6 +69,8 @@ namespace PolishedPlushiesAndSillyScrap
             }
             if (isNuko)
             {
+                nukoAnimator = transform.Find("GlobalAnimator");
+                muted = PolishedPlushiesAndSillyScrap.nukoMute.Value;
                 maxInterval = PolishedPlushiesAndSillyScrap.nukoAnimFrequency.Value;
                 animChancePercent = PolishedPlushiesAndSillyScrap.nukoAnimConsistency.Value;
                 correctVertical = 0.26f;
@@ -69,6 +78,7 @@ namespace PolishedPlushiesAndSillyScrap
             }
             else if (itemProperties.itemName == "Seal")
             {
+                muted = PolishedPlushiesAndSillyScrap.sealMute.Value;
                 maxInterval = PolishedPlushiesAndSillyScrap.sealAnimFrequency.Value;
                 animChancePercent = PolishedPlushiesAndSillyScrap.sealAnimConsistency.Value;
                 correctVertical = 0.5f;
@@ -110,7 +120,7 @@ namespace PolishedPlushiesAndSillyScrap
                         triggerAnimator.SetTrigger(animatorTriggers[num1]);
                     }
                     bool playWalkieSFX = SomeWalkiesAreActive();
-                    if (isNuko && !playWalkieSFX && !isInShipRoom && !isInElevator)
+                    if ((isNuko && !playWalkieSFX && !isInShipRoom && !isInElevator) || muted)
                     {
                         return;
                     }
@@ -282,6 +292,15 @@ namespace PolishedPlushiesAndSillyScrap
                     }
                     walkie.thisAudio.PlayOneShot(clip);
                 }
+            }
+        }
+
+        public override void LateUpdate()
+        {
+            base.LateUpdate();
+            if (isNuko && nukoAnimator != null)
+            {
+                nukoAnimator.localPosition += nukoOffset;
             }
         }
 

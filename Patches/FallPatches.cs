@@ -43,7 +43,7 @@ namespace PolishedPlushiesAndSillyScrap.Patches
 
         [HarmonyPatch(typeof(GrabbableObject), nameof(GrabbableObject.GetPhysicsRegionOfDroppedObject))]
         [HarmonyPrefix]
-        static void RaycastFix(GrabbableObject __instance, PlayerControllerB playerDropping)
+        static void RaycastCheck(GrabbableObject __instance, PlayerControllerB playerDropping)
         {
             if (__instance.gameObject.GetComponent<IdleAnimatingProp>())
             {
@@ -62,24 +62,11 @@ namespace PolishedPlushiesAndSillyScrap.Patches
                         if (hitInfo.point.y > __instance.transform.position.y)
                         {
                             PolishedPlushiesAndSillyScrap.Logger.LogDebug("Detected bad raycast! Resolving...");
-                            __instance.gameObject.transform.position += new Vector3(0, hitInfo.point.y - __instance.transform.position.y + 0.2f, 0);
-                        }
-                    }
-                }
-                else
-                {
-                    Ray ray = new Ray(__instance.transform.position, -Vector3.up);
-                    if (Physics.Raycast(ray, out hitInfo, 80f, 1342179585, QueryTriggerInteraction.Ignore))
-                    {
-                        if (hitInfo.point.y > __instance.transform.position.y)
-                        {
-                            PolishedPlushiesAndSillyScrap.Logger.LogDebug("Detected bad raycast! Resolving...");
-                            __instance.gameObject.transform.position += new Vector3(0, hitInfo.point.y - __instance.transform.position.y + 0.2f, 0);
+                            __instance.gameObject.transform.position += new Vector3(0f, hitInfo.point.y - __instance.transform.position.y + 0.2f, 0f);
                         }
                     }
                 }
             }
-
         }
     }
 }

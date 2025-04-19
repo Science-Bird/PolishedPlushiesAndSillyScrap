@@ -48,9 +48,11 @@ namespace PolishedPlushiesAndSillyScrap
         public static ConfigEntry<int> nikoSFX2;
         public static ConfigEntry<int> nikoSFX3;
 
+        public static ConfigEntry<bool> nukoMute;
         public static ConfigEntry<bool> nukoTransmitMore;
         public static ConfigEntry<float> nukoAnimFrequency;
         public static ConfigEntry<float> nukoAnimConsistency;
+        public static ConfigEntry<bool> sealMute;
         public static ConfigEntry<bool> sealAttractDogs;
         public static ConfigEntry<float> sealAnimFrequency;
         public static ConfigEntry<float> sealAnimConsistency;
@@ -132,10 +134,12 @@ namespace PolishedPlushiesAndSillyScrap
             nikoSFX2 = base.Config.Bind("Niko", "Sound 2 Chance", 10, new ConfigDescription("Percent chance of triggering Niko's sound effect 2 when squeezed.", new AcceptableValueRange<int>(0, 100)));
             nikoSFX3 = base.Config.Bind("Niko", "Sound 3 Chance", 10, new ConfigDescription("Percent chance of triggering Niko's sound effect 3 when squeezed.", new AcceptableValueRange<int>(0, 100)));
 
+            nukoMute = base.Config.Bind("Nuko", "Mute Animation Sounds", false, "Don't play sounds during idle animations (will still make noise when grabbed and dropped).");
             nukoTransmitMore = base.Config.Bind("Nuko", "Transmit More Sounds", false, "Transmit sounds over walkie-talkies when Nuko is dropped or grabbed. By default, drop/grab sounds are only played on the ship speaker to avoid checking the map for walkie-talkies every time the scrap is interacted with.");
             nukoAnimFrequency = base.Config.Bind("Nuko", "Animation Frequency", 25f, new ConfigDescription("Maximum time (in seconds) between random idle animations. The interval is rolled randomly, so this just sets the longest possible random interval.", new AcceptableValueRange<float>(10, 200)));
             nukoAnimConsistency = base.Config.Bind("Nuko", "Animation Consistency", 50f, new ConfigDescription("As a percent, how often animations will actually occur on the random interval. The lower this is, animations will be less frequent and more variable.", new AcceptableValueRange<float>(0, 100)));
 
+            sealMute = base.Config.Bind("Seal", "Mute Animation Sounds", false, "Don't play sounds during idle animations (will still make noise when grabbed and dropped).");
             sealAttractDogs = base.Config.Bind("Seal", "Heard By Dogs", true, "Eyeless dogs can hear the random noises made by seals. This is similar to mask laughing, and should only have a small effect when the dogs are very close. Grabbing and dropping sounds will always attract dogs regardless of this setting.");
             sealAnimFrequency = base.Config.Bind("Seal", "Animation Frequency", 35f, new ConfigDescription("Maximum time (in seconds) between random idle animations. The interval is rolled randomly, so this just sets the longest possible random interval.", new AcceptableValueRange<float>(10, 200)));
             sealAnimConsistency = base.Config.Bind("Seal", "Animation Consistency", 50f, new ConfigDescription("As a percent, how often animations will actually occur on the random interval. The lower this is, animations will be less frequent and more variable.", new AcceptableValueRange<float>(0, 100)));
