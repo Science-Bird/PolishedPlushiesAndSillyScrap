@@ -12,6 +12,7 @@ namespace PolishedPlushiesAndSillyScrap
     {
         public static AssetBundle PlushAssets;
         public static Dictionary<string, GameObject> Prefabs = new Dictionary<string, GameObject>();
+        public static string[] contentNames = ["Frieren", "Pomni", "Freddy", "Reimu", "Blahaj", "Pou", "Rei", "NecoArc", "Bocchi", "Miku", "Teto", "Pukeko", "Niko", "Nuko", "Seal"];
 
         public static void RegisterScrap()
         {
@@ -36,11 +37,11 @@ namespace PolishedPlushiesAndSillyScrap
 
             if (PolishedPlushiesAndSillyScrap.onlyLoadEnabled.Value)
             {
-                for (int i = 0; i < content.Count; i++)
+                for (int i = 0; i < contentNames.Length; i++)
                 {
                     if (!PolishedPlushiesAndSillyScrap.enablePlushies[i].Value)
                     {
-                        content.RemoveAt(i);
+                        content.RemoveAll(x => x.ID == contentNames[i]);
                     }
                 }
             }
